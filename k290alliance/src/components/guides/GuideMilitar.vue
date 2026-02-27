@@ -40,9 +40,9 @@ const uselessHeroes = computed(() => allHeroes.value.filter(h => heroCategories.
     
     <!-- Seção de Capitães (Mantida Original) -->
     <div class="card-bg p-8 rounded-lg border border-white/10">
-      <h2 class="text-3xl font-medieval text-white mb-6 border-b border-medieval-gold/30 pb-4">Hall dos Capitães</h2>
+      <h2 class="text-3xl font-medieval text-white mb-6 border-b border-medieval-gold/30 pb-4">Hall of Captains</h2>
       <p class="text-gray-300 mb-8 leading-relaxed">
-        Conheça os heróis que liderarão seus exércitos. Entender a especialidade de cada um é a chave para a vitória.
+        Meet the heroes and capitains who will lead your armies. Understanding each one's specialty is the key to victory.
       </p>
 
       <div class="space-y-12">
@@ -82,9 +82,9 @@ const uselessHeroes = computed(() => allHeroes.value.filter(h => heroCategories.
 
     <!-- Seção de Heróis (Avatar) - REORGANIZADA -->
     <div class="card-bg p-8 rounded-lg border border-white/10">
-      <h2 class="text-3xl font-medieval text-white mb-6 border-b border-medieval-gold/30 pb-4">Panteão dos Heróis (Avatares)</h2>
+      <h2 class="text-3xl font-medieval text-white mb-6 border-b border-medieval-gold/30 pb-4">Pantheon of Heroes (Avatars)</h2>
       <p class="text-gray-300 mb-8 leading-relaxed">
-        Seu Avatar define seu estilo de jogo. Escolha com sabedoria entre dominar o campo de batalha, proteger sua cidade ou maximizar sua economia.
+        Your Avatar defines your playstyle. Choose wisely between dominating the battlefield, protecting your city, or maximizing your economy.
       </p>
 
       <div class="space-y-12">

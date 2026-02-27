@@ -199,7 +199,7 @@ export const devTournaments = [
   {
     id: "crypt",
     title: "Crypt Raiders",
-    img: "Invasores_Cripta.png",
+    img: "Invasor_Cripta.png",
     icon: "fa-dungeon",
     desc: "Explore crypts. Material/gem quality increases points.",
     rewards: [
@@ -210,7 +210,7 @@ export const devTournaments = [
   {
     id: "duty",
     title: "Call of Duty",
-    img: "Chamada_Dever.png",
+    img: "chamada_dever.png",
     icon: "fa-users",
     desc: "Train your army. Higher leadership/quality = more points.",
     rewards: [
@@ -221,7 +221,7 @@ export const devTournaments = [
   {
     id: "wargames",
     title: "War Games",
-    img: "Jogos_Guerra.png",
+    img: "war_games.png",
     icon: "fa-swords",
     desc: "Defeat other players' troops (PvP).",
     rewards: [
@@ -232,7 +232,7 @@ export const devTournaments = [
   {
     id: "officer",
     title: "Officer Academy",
-    img: "Academia_Oficiais.png",
+    img: "academia_oficial.png",
     icon: "fa-graduation-cap",
     desc: "Earn experience points with your Hero and Captains.",
     rewards: [
@@ -261,7 +261,7 @@ export const specialDevEvents = [
   },
   {
     title: "Summoning Master",
-    img: "Mestre_Invocacao.png",
+    img: "invocacao.png",
     desc: "Obtain fragments in the Circle. Common=1 pt, Elite=10 pts."
   }
 ];

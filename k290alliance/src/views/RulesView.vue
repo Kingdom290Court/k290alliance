@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { rulesData, channelsData } from '../data/db.js'
 
+// --- Lógica de Cópia das Regras ---
 const copiedId = ref(null);
 
 const getIndentClass = (id) => {
@@ -23,11 +24,8 @@ const getTextClass = (id) => {
 const isMainSection = (id) => id.split('.').filter(Boolean).length === 1;
 
 const copyRule = (rule) => {
-    // Pega a regra atual e todas as suas sub-regras (ex: se id for "1", pega "1.1", "1.2", etc.)
     const prefix = rule.id + '.';
     const rulesToCopy = rulesData.filter(r => r.id === rule.id || r.id.startsWith(prefix));
-    
-    // Junta todas as regras encontradas com uma quebra de linha
     const textToCopy = rulesToCopy.map(r => `ROE ${r.id}: ${r.text}`).join('\n');
     
     const textArea = document.createElement("textarea");
@@ -48,6 +46,74 @@ const copyRule = (rule) => {
         }, 2000);
     } catch (err) {
         console.error('Falha ao copiar a regra', err);
+    }
+    
+    document.body.removeChild(textArea);
+};
+
+// --- Lógica de Cópia dos Canais ---
+const copiedChannelName = ref(null);
+const copiedAllChannels = ref(false);
+
+const copyChannel = (name) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = name;
+    textArea.style.position = "fixed";
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.opacity = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        copiedChannelName.value = name;
+        setTimeout(() => {
+            if (copiedChannelName.value === name) copiedChannelName.value = null;
+        }, 2000);
+    } catch (err) {
+        console.error('Falha ao copiar o nome do canal', err);
+    }
+    
+    document.body.removeChild(textArea);
+};
+
+const copyAllChannels = () => {
+    // Texto pré-formatado com a mensagem customizada
+    const textToCopy = `Go to "chat search" > type the corresponding name > "Join" button.
++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+Kingdom 290 OFFICAL CHATS
+"K290-ROE" (Rules of Engagement)
+"K290-WS" (Well Spring Registration)
+"K290-DM" (Dragon Mound Registration)
+"K290-COURT" (Judges & Diplomats Adjudicate Cases)
+"K290-COURTDECISIONS" (Official Court Case Rulings)
+"K290-DISPUTES" (Resolve Minor ROE Disputes)
+"K290-OUTLAWS" (List of Current Outlaws)
+"K290-HELPDESK" (Ask & Answer General Game Questions)
+"K290-CPEXCHANGE" (Find Other Players for CP Exchanges)
+"ROE-REVISION " [space at end] (Put your suggestions for ROE)
+Leader Chat - Send a message to someone, but definitely not to me!`;
+    
+    const textArea = document.createElement("textarea");
+    textArea.value = textToCopy;
+    textArea.style.position = "fixed";
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.opacity = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        copiedAllChannels.value = true;
+        setTimeout(() => {
+            copiedAllChannels.value = false;
+        }, 2000);
+    } catch (err) {
+        console.error('Falha ao copiar todos os canais', err);
     }
     
     document.body.removeChild(textArea);
@@ -90,10 +156,28 @@ const copyRule = (rule) => {
 
         <!-- Canais Oficiais -->
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-medieval font-bold text-royal-cream mb-12 text-glow">Official Channels</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
+                <h2 class="text-4xl font-medieval font-bold text-royal-cream text-glow">Official Channels</h2>
+                <button @click="copyAllChannels" 
+                        class="px-5 py-2 border transition text-[10px] uppercase tracking-ultra-wide rounded-sm"
+                        :class="copiedAllChannels ? 'border-green-500 text-green-400 bg-green-500/10' : 'border-royal-gold/50 text-royal-gold hover:bg-royal-gold hover:text-black'">
+                    <i class="fas mr-2" :class="copiedAllChannels ? 'fa-check' : 'fa-copy'"></i>
+                    {{ copiedAllChannels ? 'COPIED ALL' : 'COPY ALL CHATS' }}
+                </button>
+            </div>
+            
             <div class="glass-card overflow-hidden">
-                <div v-for="(channel, idx) in channelsData" :key="idx" class="p-6 border-b border-white/5 last:border-0 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 hover:bg-white/5 transition text-left">
-                    <span class="text-royal-gold font-medieval font-bold tracking-widest text-sm md:w-1/3">{{ channel.name }}</span>
+                <div v-for="(channel, idx) in channelsData" :key="idx" class="p-6 border-b border-white/5 last:border-0 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 hover:bg-white/5 transition text-left group">
+                    
+                    <!-- Nome do Canal e Botão de Cópia -->
+                    <div class="md:w-1/3 flex items-center justify-between md:justify-start gap-3">
+                        <span class="text-royal-gold font-medieval font-bold tracking-widest text-sm">{{ channel.name }}</span>
+                        <button @click="copyChannel(channel.name)" class="text-gray-500 hover:text-royal-gold transition opacity-100 md:opacity-0 md:group-hover:opacity-100 p-1" title="Copiar Nome do Canal">
+                            <i :class="copiedChannelName === channel.name ? 'fas fa-check text-green-400' : 'far fa-copy'"></i>
+                        </button>
+                    </div>
+
+                    <!-- Descrição -->
                     <span class="text-gray-300 text-sm md:w-2/3 leading-relaxed">{{ channel.desc }}</span>
                 </div>
             </div>

@@ -49,7 +49,7 @@ const tutorialCaptains = computed(() => {
           <div class="bg-red-500/20 text-red-400 w-8 h-8 flex items-center justify-center rounded border border-red-500/50">
             <i class="fas fa-exclamation"></i>
           </div>
-          <h3 class="text-2xl font-medieval font-bold text-red-400 text-glow uppercase tracking-widest">Crucial: Hero's Test (7 Days)</h3>
+          <h3 class="text-2xl font-medieval font-bold text-red-400 text-glow uppercase tracking-widest">Crucial: Hero's Test (7 Days) <br> [Only SmartPhone version]</h3>
         </div>
         
         <p class="text-gray-300 font-light mb-6 leading-relaxed">

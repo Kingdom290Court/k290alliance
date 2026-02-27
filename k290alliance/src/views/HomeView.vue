@@ -49,9 +49,9 @@ import { kingdomData } from '../data/db.js'
                     <h3 class="text-2xl font-medieval font-bold text-royal-cream mb-4 text-glow">Royal Academy</h3>
                     <p class="text-xs text-gray-400 uppercase tracking-widest mb-8 leading-relaxed">Fresh numbers and spreadsheets for strategy planning.</p>
                 </div>
-                <router-link to="/academy" class="inline-block border border-royal-gold/30 hover:border-royal-gold text-royal-gold hover:text-royal-cream transition py-3 px-6 text-xs font-medium uppercase tracking-widest">
-                    Enter Library
-                </router-link>
+                    <router-link to="/library" class="inline-block border border-royal-gold/30 hover:border-royal-gold text-royal-gold hover:text-royal-cream transition py-3 px-6 text-xs font-medium uppercase tracking-widest">
+                        Enter Library
+                    </router-link>
             </div>
         </div>
     </div>
