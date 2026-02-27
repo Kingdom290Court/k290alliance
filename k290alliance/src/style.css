@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #050505;
+  background-image: url('[https://images.unsplash.com/photo-1599540884849-04c38221adbb?q=80&w=2070&auto=format&fit=crop](https://images.unsplash.com/photo-1599540884849-04c38221adbb?q=80&w=2070&auto=format&fit=crop)');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #d1d5db;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+#app {
+  background: radial-gradient(circle at 50% 30%, rgba(10, 10, 10, 0.4) 0%, rgba(5, 5, 5, 0.95) 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+
+/* Vue Transitions */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  background: rgba(20, 20, 20, 0.8);
+}
+
+.text-glow {
+  text-shadow: 0 2px 15px rgba(212, 175, 55, 0.2);
+}
